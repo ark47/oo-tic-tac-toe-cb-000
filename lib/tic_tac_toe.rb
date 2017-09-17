@@ -1,7 +1,7 @@
 class TicTacToe
 
   def initialize(board=nil)
-    @board board || = Array.new(9, " ")
+    @board board || Array.new(9, " ")
   end
 
   WIN_COMBINATIONS = [
@@ -50,11 +50,11 @@ class TicTacToe
     board.all?{|token| token == "X" || token == "O"}
   end
 
-  def draw?
+  def draw?(board)
     !won?(board) && full?(board)
   end
 
-  def over?
+  def over?(board)
     won?(board) || draw?(board)
   end
 
@@ -62,7 +62,7 @@ class TicTacToe
     user_input.to_i - 1
   end
 
-  def turn
+  def turn(board)
     puts "Please enter 1-9:"
     user_input = gets.strip
     index = input_to_index(user_input)
@@ -74,15 +74,15 @@ class TicTacToe
     end
   end
 
-  def position_taken?(index)
+  def position_taken?(board, index)
     board[index]== "X" || board[index] == "O"
   end
 
-  def current_player
+  def current_player(board)
     turn_count(board) % 2 == 0 ? "X" : "O"
   end
 
-  def turn_count
+  def turn_count(board)
     board.count{|x| x == "X" || x == "O"}
   end
 
@@ -90,7 +90,7 @@ class TicTacToe
     board[index] = player
   end
 
-  def winner
+  def winner(board)
     if winning_combo = won?(board)
       board[winning_combo.first]
     end
