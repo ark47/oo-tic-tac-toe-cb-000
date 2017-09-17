@@ -82,8 +82,8 @@ class TicTacToe
     turn_count % 2 == 0 ? "X" : "O"
   end
 
-  def turn_count(board)
-    board.count{|x| x == "X" || x == "O"}
+  def turn_count
+    @board.count{|x| x == "X" || x == "O"}
   end
 
   def move(board, index, player)
