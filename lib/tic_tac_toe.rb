@@ -1,7 +1,7 @@
 class TicTacToe
 
-  def initialize(board)
-    @board = Array.new(9, " ")
+  def initialize(board=nil)
+    @board board || = Array.new(9, " ")
   end
 
   WIN_COMBINATIONS = [
@@ -96,5 +96,4 @@ class TicTacToe
     end
   end
 
-  
 end
