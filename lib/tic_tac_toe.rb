@@ -27,22 +27,22 @@ class TicTacToe
   end
 
   def display_board
-    puts " #{board[0]} | #{board[1]} | #{board[2]} "
+    puts " #{@board[0]} | #{@board[1]} | #{@board[2]} "
     puts "-----------"
-    puts " #{board[3]} | #{board[4]} | #{board[5]} "
+    puts " #{@board[3]} | #{@board[4]} | #{@board[5]} "
     puts "-----------"
-    puts " #{board[6]} | #{board[7]} | #{board[8]} "
+    puts " #{@board[6]} | #{@board[7]} | #{@board[8]} "
   end
 
   def valid_move?(board, index)
-    index.between?(0,8) && !position_taken?(board, index)
+    index.between?(0,8) && !position_taken?(@board, index)
   end
 
-  def won?(board)
+  def won?
     WIN_COMBINATIONS.detect do |combo|
-      board[combo[0]] == board[combo[1]] &&
-      board[combo[1]] == board[combo[2]] &&
-      position_taken?(board, combo[0])
+      @board[combo[0]] == @board[combo[1]] &&
+      @board[combo[1]] == @board[combo[2]] &&
+      position_taken?(@board, combo[0])
     end
   end
 
